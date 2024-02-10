@@ -23,14 +23,16 @@ class CatCard extends StatelessWidget {
         color: Palette.secondary,
         child: Column(
           children: [
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(catType.imageLink),
+            Expanded(
+              child: Container(
+                
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(catType.imageLink),
+                  ),
                 ),
               ),
             ),
@@ -39,7 +41,7 @@ class CatCard extends StatelessWidget {
                 catType.name,
                 style: TextStyle(
                     color: Palette.primary,
-                    fontSize: 10,
+                    fontSize: 20,
                     fontFamily: 'ProtestRiot',
                     fontWeight: FontWeight.w600),
               ),

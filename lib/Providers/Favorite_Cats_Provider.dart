@@ -1,9 +1,8 @@
 import 'package:cats/model/cat_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 class FavoriteCatProvider extends StateNotifier<List<Cats>> {
-FavoriteCatProvider() : super([]);
+  FavoriteCatProvider() : super([]);
 
   bool togglecatFavoriteStatus(Cats catType) {
     final catIsFavorite = state.contains(catType);
@@ -17,9 +16,7 @@ FavoriteCatProvider() : super([]);
     }
   }
 }
-
 final favoriteCatsProvider =
     StateNotifierProvider<FavoriteCatProvider, List<Cats>>((ref) {
   return FavoriteCatProvider();
 });
-
