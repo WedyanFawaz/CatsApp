@@ -14,7 +14,7 @@ Future<void> main() async {
   );
 }
 
-final favoriteCatProvider = StateProvider.autoDispose((ref) => <String>{});
+
 
 class MyApp extends StatelessWidget {
   final List<Cats> list;

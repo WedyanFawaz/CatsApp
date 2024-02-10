@@ -1,4 +1,4 @@
-import 'package:cats/Pages/Favorite_Cats_Page.dart';
+import 'package:cats/Pages/Cat_Favorite_Page.dart';
 import 'package:cats/Theme/pallete.dart';
 import 'package:cats/model/cat_model.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class CatTypesPage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'Types of cats',
-          style: TextStyle(color: Palette.secondary),
+          style: TextStyle(color: Palette.secondary,fontFamily: 'ProtestRiot'),
         ),
         backgroundColor: Palette.primary,
         actions: [

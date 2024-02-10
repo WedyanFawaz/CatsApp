@@ -2,23 +2,22 @@ import 'package:cats/Theme/pallete.dart';
 import 'package:cats/model/cat_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:provider/provider.dart';
-
-import '../main.dart';
+import '../Providers/Favorite_Cats_Provider.dart';
 
 class CatInfoPage extends ConsumerWidget {
   final Cats catType;
 
-  CatInfoPage({required this.catType});
+  CatInfoPage({super.key, required this.catType});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favorites = ref.watch(favoriteCatProvider);
+    final favorites = ref.watch(favoriteCatsProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           catType.name,
-          style: TextStyle(color: Palette.secondary),
+          style: TextStyle(color: Palette.secondary,fontFamily: 'ProtestRiot'),
         ),
         backgroundColor: Palette.primary,
         actions: [
@@ -27,13 +26,9 @@ class CatInfoPage extends ConsumerWidget {
                 ? Icon(Icons.favorite, color: Colors.red)
                 : Icon(Icons.favorite_border),
             onPressed: () {
-              final favoriteCatState = context.read().favoriteCatProvider;
-
-              if (favorites.contains(catType)) {
-                favoriteCatState.state = Set.from(favorites..remove(catType));
-              } else {
-                favoriteCatState.state = Set.from(favorites..add(catType.name));
-              }
+              ref
+                  .read(favoriteCatsProvider.notifier)
+                  .togglecatFavoriteStatus(catType);
             },
           ),
         ],
@@ -56,30 +51,34 @@ class CatInfoPage extends ConsumerWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
-                catType.name,
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-              ),
               SizedBox(height: 10),
               Text(
-                'origin : ${catType.origin}',
-                style: TextStyle(fontSize: 16.0),
-              ), SizedBox(height: 10),
+                catType.name,
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,fontFamily: 'ProtestRiot'),
+              ),
+              SizedBox(height: 5),
               Text(
-                'maxWeight : ${catType.maxWeight==0? 'Known': catType.maxWeight} Kg',
+                'Origin : ${catType.origin}',
                 style: TextStyle(fontSize: 16.0),
-              ),SizedBox(height: 10),
-               Text(
-                'minWeight : ${catType.minWeight==0? 'Known': catType.minWeight} Kg',
-                style: TextStyle(fontSize: 16.0),
-              ),SizedBox(height: 10),
+              ),
+              SizedBox(height: 5),
               Text(
-                'length : ${catType.length}',
+                'MaxWeight : ${catType.maxWeight == 0 ? 'Known' : catType.maxWeight} Kg',
                 style: TextStyle(fontSize: 16.0),
-              ),SizedBox(height: 10),
+              ),
+              SizedBox(height: 5),
               Text(
-                'intelligence : ${catType.intelligence==0? 'Unknown': catType.intelligence}',
+                'MinWeight : ${catType.minWeight == 0 ? 'Known' : catType.minWeight} Kg',
+                style: TextStyle(fontSize: 16.0),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Length : ${catType.length}',
+                style: TextStyle(fontSize: 16.0),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'Intelligence : ${catType.intelligence == 0 ? 'Unknown' : catType.intelligence}',
                 style: TextStyle(fontSize: 16.0),
               ),
             ],

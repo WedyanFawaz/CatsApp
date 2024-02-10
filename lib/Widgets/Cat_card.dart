@@ -19,36 +19,34 @@ class CatCard extends StatelessWidget {
           ),
         );
       },
-    
-        child: Container(
-          color: Palette.secondary,
-        
-          child: Column(
-            
-            children: [
-               Container(
-                height: 230,
-                width: double.infinity,
-          decoration: BoxDecoration(
-             borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            image: DecorationImage(
-            
-              fit: BoxFit.cover,
-              image: NetworkImage(catType.imageLink),
-            ),
-          ),
-               ),
-                 Center(
-                child: Text(
-                  catType.name,
-                  style: TextStyle(
-                      color: Palette.primary,fontSize: 25, fontWeight:FontWeight.w600),
+      child: Container(
+        color: Palette.secondary,
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(catType.imageLink),
                 ),
               ),
-            ],
-          ),
+            ),
+            Center(
+              child: Text(
+                catType.name,
+                style: TextStyle(
+                    color: Palette.primary,
+                    fontSize: 10,
+                    fontFamily: 'ProtestRiot',
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
         ),
-      );
-    
+      ),
+    );
   }
 }
