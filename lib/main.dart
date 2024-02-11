@@ -1,6 +1,6 @@
-import 'package:cats/Pages/Cat_Types_Page.dart';
+import 'package:cats/Pages/cat_types_page.dart';
 import 'package:cats/model/cat_model.dart';
-import 'package:cats/web_serivce/cats_web_Services.dart';
+import 'package:cats/web_serivce/cats_web_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,8 +14,6 @@ Future<void> main() async {
   );
 }
 
-
-
 class MyApp extends StatelessWidget {
   final List<Cats> list;
 
@@ -24,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       debugShowCheckedModeBanner: false, 
+      debugShowCheckedModeBanner: false,
       title: 'Cat Types',
       theme: ThemeData(
         primarySwatch: Colors.blue,

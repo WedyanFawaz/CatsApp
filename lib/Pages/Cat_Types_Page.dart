@@ -1,8 +1,8 @@
-import 'package:cats/Pages/Cat_Favorite_Page.dart';
-import 'package:cats/Theme/pallete.dart';
+import 'package:cats/widgets/cat_card.dart';
+import 'package:cats/pages/cat_favorite_page.dart';
+import 'package:cats/theme/pallete.dart';
 import 'package:cats/model/cat_model.dart';
 import 'package:flutter/material.dart';
-import '../Widgets/Cat_card.dart';
 
 class CatTypesPage extends StatelessWidget {
   final List<Cats> allCats;
@@ -14,9 +14,9 @@ class CatTypesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Types of cats',
-          style: TextStyle(color: Palette.secondary,fontFamily: 'ProtestRiot'),
+          style: TextStyle(color: Palette.secondary, fontFamily: 'ProtestRiot'),
         ),
         backgroundColor: Palette.primary,
         actions: [
@@ -27,7 +27,7 @@ class CatTypesPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FavoriteCatsPage(),
+                  builder: (context) => const FavoriteCatsPage(),
                 ),
               );
             },

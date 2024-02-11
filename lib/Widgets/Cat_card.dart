@@ -6,7 +6,7 @@ import '../Pages/Cat_Info_Page.dart';
 class CatCard extends StatelessWidget {
   final Cats catType;
 
-  CatCard({required this.catType});
+  const CatCard({super.key, required this.catType});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,9 @@ class CatCard extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(catType.imageLink),
@@ -39,11 +38,12 @@ class CatCard extends StatelessWidget {
             Center(
               child: Text(
                 catType.name,
-                style: TextStyle(
-                    color: Palette.primary,
-                    fontSize: 20,
-                    fontFamily: 'ProtestRiot',
-                    fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  color: Palette.primary,
+                  fontSize: 20,
+                  fontFamily: 'ProtestRiot',
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],

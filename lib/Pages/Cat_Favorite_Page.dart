@@ -1,10 +1,12 @@
-import 'package:cats/Pages/Cat_Info_Page.dart';
-import 'package:cats/Providers/Favorite_Cats_Provider.dart';
-import 'package:cats/Theme/pallete.dart';
+import 'package:cats/pages/cat_info_page.dart';
+import 'package:cats/providers/favorite_cats_provider.dart';
+import 'package:cats/theme/pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FavoriteCatsPage extends ConsumerWidget {
+  const FavoriteCatsPage({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final favorites = ref.watch(favoriteCatsProvider);
@@ -12,9 +14,9 @@ class FavoriteCatsPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Palette.primary,
-        title: Text(
+        title: const Text(
           'Favorite Cats',
-          style: TextStyle(color: Palette.secondary,fontFamily: 'ProtestRiot'),
+          style: TextStyle(color: Palette.secondary, fontFamily: 'ProtestRiot'),
         ),
       ),
       body: ListView.builder(
@@ -23,13 +25,12 @@ class FavoriteCatsPage extends ConsumerWidget {
           return ElevatedButton(
             style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
+                    const RoundedRectangleBorder(
               borderRadius: BorderRadius.zero,
             ))),
-            child: Container(
-                child: Row(
+            child: Row(
               children: [
-                Container(
+                SizedBox(
                   height: 100,
                   width: 100,
                   child: Image.network(
@@ -37,12 +38,13 @@ class FavoriteCatsPage extends ConsumerWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(
-                  width: 10,
+                const SizedBox(width: 10),
+                Text(
+                  favorites.elementAt(index).name,
+                  style: const TextStyle(fontFamily: 'ProtestRiot'),
                 ),
-                Text(favorites.elementAt(index).name,style: TextStyle(fontFamily: 'ProtestRiot'),),
               ],
-            )),
+            ),
             onPressed: () {
               Navigator.push(
                 context,

@@ -16,6 +16,7 @@ class FavoriteCatProvider extends StateNotifier<List<Cats>> {
     }
   }
 }
+
 final favoriteCatsProvider =
     StateNotifierProvider<FavoriteCatProvider, List<Cats>>((ref) {
   return FavoriteCatProvider();
