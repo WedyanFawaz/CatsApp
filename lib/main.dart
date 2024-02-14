@@ -1,33 +1,22 @@
-import 'package:cats/Pages/cat_types_page.dart';
-import 'package:cats/model/cat_model.dart';
-import 'package:cats/web_serivce/cats_web_services.dart';
+import 'package:cats/data/all_cats.dart';
+import 'package:cats/model/cat.dart';
+import 'package:cats/screens/cats_home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-Future<void> main() async {
-  final catWebSerivces = CatWebSerivces();
-  List<Cats> catList = await catWebSerivces.getCatList();
-  runApp(
-    ProviderScope(
-      child: MyApp(list: catList),
-    ),
-  );
+final cats = allCats.map<Cat>((jsonCat) => Cat.fromJson(jsonCat)).toList();
+
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final List<Cats> list;
+  const MyApp({super.key});
 
-  const MyApp({super.key, required this.list});
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Cat Types',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: CatTypesPage(allCats: list),
+    return const MaterialApp(
+      home: CatsHomeScreen(),
     );
   }
 }
